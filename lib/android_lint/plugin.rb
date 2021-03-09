@@ -158,7 +158,8 @@ module Danger
     end
 
     def parse_results(results, heading)
-      target_files = (git.modified_files - git.deleted_files) + git.added_files
+#       target_files = (git.modified_files - git.deleted_files) + git.added_files
+      target_files =  git.added_files
       dir = "#{Dir.pwd}/"
       count = 0;
       message = ""
@@ -187,7 +188,8 @@ module Danger
     #
     # @return [void]
     def send_inline_comment (issues)
-      target_files = (git.modified_files - git.deleted_files) + git.added_files
+#       target_files = (git.modified_files - git.deleted_files) + git.added_files
+      target_files =  git.added_files
       dir = "#{Dir.pwd}/"
       SEVERITY_LEVELS.reverse.each do |level|
         filtered = issues.select{|issue| issue.get("severity") == level}
